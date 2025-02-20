@@ -38,7 +38,7 @@ const unsubscibe = store.subscribe(() =>
 
 store.dispatch(orderPizza());
 
+// unsubscribe only stops the callback function in subscribe from executing, it doesn't stops dispatching the action
 unsubscibe();
 
-// this won't work as we have unsubscribed!
 store.dispatch(orderPizza());

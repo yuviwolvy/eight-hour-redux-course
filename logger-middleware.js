@@ -1,6 +1,9 @@
 const redux = require("redux");
 const createStore = redux.createStore;
 const combineReducer = redux.combineReducers;
+const reduxLogger = require("redux-logger");
+const logger = reduxLogger.createLogger();
+const applyMiddleware = redux.applyMiddleware;
 
 const ORDER_PIZZA = "ORDER_PIZZA";
 const ORDER_BURGER = "ORDER_BURGER";
@@ -48,14 +51,12 @@ const rootReducer = combineReducer({
   burger: reducerForBurger,
 });
 
-const store = createStore(rootReducer); // reducer is our reducer function
+const store = createStore(rootReducer, applyMiddleware(logger)); // reducer is our reducer function
 
 console.log("Initial State: ", store.getState());
 
 // the function in subscribe method runs whenever the state in the redux store changes
-const unsubscibe = store.subscribe(() =>
-  console.log("Updated state: ", store.getState())
-);
+const unsubscibe = store.subscribe(() => {});
 
 store.dispatch(orderPizza());
 store.dispatch(orderBurger());
