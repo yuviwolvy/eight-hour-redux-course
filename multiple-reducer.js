@@ -37,6 +37,11 @@ const reducerForBurger = (state = initialStateForBurger, action) => {
         ...state,
         burgerBuns: state.burgerBuns - 1,
       };
+    case ORDER_PIZZA:
+      return {
+        ...state,
+        burgerBuns: state.burgerBuns - 1,
+      };
     default:
       return state;
   }
